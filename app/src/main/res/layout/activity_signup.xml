@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".SignupActivity">
+
+    <TextView
+        android:id="@+id/txtLogup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Create account"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/imgAvaCre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLogup"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_account_circle_24" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgAvaCre"
+        android:id="@+id/ip3">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvEmailCre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/white" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvPassCre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEmailCre"
+                android:layout_marginTop="30dp"
+                android:text="Password"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvUsernameCre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPassCre"
+                android:layout_marginTop="30dp"
+                android:text="Username"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvTelCre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvUsernameCre"
+                android:layout_marginTop="30dp"
+                android:text="Tel"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ip3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Create"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>

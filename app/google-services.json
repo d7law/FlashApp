@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1095347996750",
+    "project_id": "flashapp-2365b",
+    "storage_bucket": "flashapp-2365b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095347996750:android:b8b4ed0b14f3c2ecf31b1f",
+        "android_client_info": {
+          "package_name": "com.example.wallpaperunsplash_advancedandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095347996750-n5mvkqkhick5tk30fm156o3c202sbs33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtBoH5eu2cSEeFj7nrnQMo2zmSU5a6Dos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095347996750-n5mvkqkhick5tk30fm156o3c202sbs33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

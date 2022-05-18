@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tabEditorial" type="id" />
+    <item name="tabWallpaper" type="id" />
+    <item name="tabCategory" type="id" />
+</resources>

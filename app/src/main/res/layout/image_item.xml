@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivRawImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:src="@drawable/unsplash_wallpaper"></ImageView>
+
+    <TextView
+        android:id="@+id/tvRawUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivRawImg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-25dp"
+        android:text="oppo"
+        android:textColor="@color/white"
+        android:textSize="12sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvRawId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is Id Image"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_alignEnd="@id/ivRawImg"
+        android:layout_below="@id/ivRawImg"
+        android:layout_marginTop="-25dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="invisible">
+
+    </TextView>
+</RelativeLayout>

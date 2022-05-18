@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivRawWall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/unsplash_wallpaper"></ImageView>
+    <TextView
+        android:id="@+id/tvRawUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is User's name"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_below="@id/ivRawWall"
+        android:layout_marginTop="-25dp"
+        android:layout_marginLeft="10dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvRawId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is Id Image"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_alignEnd="@id/ivRawWall"
+        android:layout_below="@id/ivRawWall"
+        android:layout_marginTop="-25dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="invisible">
+
+    </TextView>
+</RelativeLayout>
