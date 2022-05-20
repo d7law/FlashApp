@@ -55,7 +55,7 @@ public class EditorialAdapter extends RecyclerView.Adapter<EditorialAdapter.EDVH
         return imgArrayList.size();
     }
 
-    public class EDVH extends RecyclerView.ViewHolder {
+    public static class EDVH extends RecyclerView.ViewHolder {
         public ImageView img;
         public TextView ownerName, idImg;
         public EDVH(@NonNull View itemView) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_primary"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".fragmentMain.SearchFragment">
 
@@ -12,7 +12,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
         app:cardCornerRadius="20dp">
 
         <SearchView
@@ -30,12 +32,16 @@
         android:text="Discover"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:layout_margin="10dp"/>
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchDiscover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        tools:listitem="@layout/image_item"
-        />
+        tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        tools:listitem="@layout/grid_photo_item"
+        app:spanCount="2"/>
 </LinearLayout>
