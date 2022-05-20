@@ -108,7 +108,7 @@ public class RawImageActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    urlImg = response.getJSONObject("urls").getString("small_s3");
+                    urlImg = response.getJSONObject("urls").getString("regular");
                     Picasso.get().load(urlImg).into(ivImg, new Callback() {
                         @Override
                         public void onSuccess() {
@@ -141,6 +141,7 @@ public class RawImageActivity extends AppCompatActivity {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
                 try {
                     wallpaperManager.setBitmap(bitmap);
+                    Toast.makeText(RawImageActivity.this, "Set Okkk", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.d("d", "cant set wall");

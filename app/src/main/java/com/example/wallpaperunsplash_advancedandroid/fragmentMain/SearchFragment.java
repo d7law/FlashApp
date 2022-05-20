@@ -1,5 +1,6 @@
 package com.example.wallpaperunsplash_advancedandroid.fragmentMain;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wallpaperunsplash_advancedandroid.R;
+import com.example.wallpaperunsplash_advancedandroid.RawImageActivity;
+import com.example.wallpaperunsplash_advancedandroid.adapter.EditorialAdapter;
 import com.example.wallpaperunsplash_advancedandroid.adapter.GridAdapter;
 import com.example.wallpaperunsplash_advancedandroid.models.ImageFiles;
 
@@ -42,7 +45,7 @@ public class SearchFragment extends Fragment {
     String img, id, owner;
     String searchKey="red";
     int pageNum=1;
-    boolean ISQUERRY = true;
+    boolean ISQUERRY = false;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -96,7 +99,17 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //Adapter
         rv = view.findViewById(R.id.rvSearchDiscover);
-        gridAdapter = new GridAdapter(getContext(), imgArraylist);
+        EditorialAdapter.OnItemClickListener listener;
+        listener = new EditorialAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ImageFiles imageFiles) {
+                Intent intent = new Intent(getActivity(), RawImageActivity.class);
+                intent.putExtra("idOfImg",imageFiles.getId_img());
+                startActivity(intent);
+                Toast.makeText(getContext(), "Open Photo", Toast.LENGTH_SHORT).show();
+            }
+        };
+        gridAdapter = new GridAdapter(getContext(), imgArraylist, listener);
         rv.setAdapter(gridAdapter);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         rv.setLayoutManager(layoutManager);
@@ -120,6 +133,7 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchKey = query;
+                ISQUERRY=true;
                 getResultSearch(searchKey, 1);
                 return true;
             }

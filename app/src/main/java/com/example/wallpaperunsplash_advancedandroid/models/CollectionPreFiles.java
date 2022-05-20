@@ -4,7 +4,18 @@ import java.io.Serializable;
 
 public class CollectionPreFiles implements Serializable {
     public String img1, img2, img3;
+    public String idCollection;
     public String nameCollection, ownerName, totalPhotos;
+
+    public String getIdCollection() {
+        return idCollection;
+    }
+
+    public void setIdCollection(String idCollection) {
+        this.idCollection = idCollection;
+    }
+
+
 
     public String getImg1() {
         return img1;
@@ -57,7 +68,8 @@ public class CollectionPreFiles implements Serializable {
     public CollectionPreFiles() {
     }
 
-    public CollectionPreFiles(String img1, String img2, String img3, String nameCollection, String ownerName, String totalPhotos) {
+    public CollectionPreFiles(String idCollection, String img1, String img2, String img3, String nameCollection, String ownerName, String totalPhotos) {
+        this.idCollection = idCollection;
         this.img1 = img1;
         this.img2 = img2;
         this.img3 = img3;

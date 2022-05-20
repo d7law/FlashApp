@@ -44,7 +44,7 @@ public class EditorialFragment extends Fragment {
 
     private boolean isLoading = false;
     private final int THREAT_SHOT = 5;
-    private int value = 1;
+    private int pageNum =2;
     String img, id, owner;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -115,37 +115,24 @@ public class EditorialFragment extends Fragment {
         rv.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         rv.setHasFixedSize(true);
         //Load data
-        getImage(value);
-        value++;
+        getImage(1);
 
         //Load more data
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int arrSize = imageFilesArrayList.size();
-                if (layoutManager.findLastVisibleItemPosition() == arrSize - 1) {
-                    layoutManager.scrollToPosition(arrSize - 1);
-                    loadMore(value);
+                if(!rv.canScrollVertically(1)){
+                    getImage(pageNum++);
                 }
             }
         });
         imageFilesArrayList.size();
     }
 
-    public void loadMore(int val) {
-        getImage(val);
-        value++;
-        editorialAdapter.notifyDataSetChanged();
-    }
 
     public void getImage(int value) {
-        String url = "https://api.unsplash.com/photos/?page=" + value + "&client_id=KO9uwqG9NK9c0Cei9MrxdsDunlzef96kWfqVH1S5tEs";
+        String url = "https://api.unsplash.com/photos/?page=" + pageNum + "&client_id=KO9uwqG9NK9c0Cei9MrxdsDunlzef96kWfqVH1S5tEs";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override

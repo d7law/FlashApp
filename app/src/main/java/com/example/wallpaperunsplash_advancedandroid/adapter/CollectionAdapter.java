@@ -19,12 +19,13 @@ import java.util.ArrayList;
 public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.CAVH> {
     public Context context;
     public ArrayList<CollectionPreFiles> collectionArray;
-
+    public CollectionAdapter.OnItemClickListener listener;
 
     public CollectionAdapter(){}
-    public CollectionAdapter(Context context, ArrayList<CollectionPreFiles> collectionArray) {
+    public CollectionAdapter(Context context, ArrayList<CollectionPreFiles> collectionArray, CollectionAdapter.OnItemClickListener listener) {
         this.context = context;
         this.collectionArray = collectionArray;
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,16 +37,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.CA
 
     @Override
     public void onBindViewHolder(@NonNull CAVH holder, int position) {
-
-        CollectionPreFiles modal = collectionArray.get(position);
-
-        holder.tvNameCollection.setText(modal.getNameCollection());
-        holder.tvTotalPhotoCollection.setText("Total: " + modal.getTotalPhotos());
-        holder.tvOwnerCollection.setText("Owner: "+modal.getOwnerName());
-
-        Picasso.get().load(modal.getImg1()).into(holder.ivCvphoto1);
-        Picasso.get().load(modal.getImg2()).into(holder.ivCvphoto2);
-        Picasso.get().load(modal.getImg3()).into(holder.ivCvphoto3);
+        holder.bind(collectionArray.get(position), listener);
     }
 
     @Override
@@ -67,6 +59,22 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.CA
             tvTotalPhotoCollection = itemView.findViewById(R.id.tvTotalPhotoCollection);
             tvOwnerCollection = itemView.findViewById(R.id.tvOwnerCollection);
         }
+        public void bind(final CollectionPreFiles collectionPreFiles, final CollectionAdapter.OnItemClickListener listener){
+            tvNameCollection.setText(collectionPreFiles.getNameCollection());
+            tvTotalPhotoCollection.setText("Total: "+collectionPreFiles.getTotalPhotos());
+            tvOwnerCollection.setText("Owner: "+collectionPreFiles.getOwnerName());
+            Picasso.get().load(collectionPreFiles.getImg1()).into(ivCvphoto1);
+            Picasso.get().load(collectionPreFiles.getImg2()).into(ivCvphoto2);
+            Picasso.get().load(collectionPreFiles.getImg3()).into(ivCvphoto3);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(collectionPreFiles);
+                 }
+            });
+        }
     }
-
+    public interface OnItemClickListener{
+        void onItemClick(CollectionPreFiles collectionPreFiles);
+    }
 }

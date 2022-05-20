@@ -1,5 +1,6 @@
 package com.example.wallpaperunsplash_advancedandroid.fragmentOfHome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wallpaperunsplash_advancedandroid.CategoryDetailActivity;
 import com.example.wallpaperunsplash_advancedandroid.R;
 import com.example.wallpaperunsplash_advancedandroid.adapter.CollectionAdapter;
 import com.example.wallpaperunsplash_advancedandroid.models.CollectionPreFiles;
@@ -39,7 +41,7 @@ public class CategoryFragment extends Fragment {
     private CollectionAdapter collectionAdapter;
     private ArrayList<CollectionPreFiles> collectionArrayList;
     private int valueLoad = 1;
-    String img1, img2, img3, owner, nameCol, totalCol;
+    String img1, img2, img3, owner, nameCol, totalCol, idCol;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -92,7 +94,17 @@ public class CategoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rv = view.findViewById(R.id.rvCollection);
-        collectionAdapter = new CollectionAdapter(getContext(), collectionArrayList);
+        CollectionAdapter.OnItemClickListener listener = new CollectionAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(CollectionPreFiles collectionPreFiles) {
+                Toast.makeText(getContext(), "OKK", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), CategoryDetailActivity.class);
+                intent.putExtra("idOfCollection",collectionPreFiles.getIdCollection());
+                intent.putExtra("nameOfCollection", collectionPreFiles.getNameCollection());
+                startActivity(intent);
+            }
+        };
+        collectionAdapter = new CollectionAdapter(getContext(), collectionArrayList, listener);
         rv.setAdapter(collectionAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(layoutManager);
@@ -133,6 +145,7 @@ public class CategoryFragment extends Fragment {
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jsonObject = response.getJSONObject(i);
+                        idCol = jsonObject.getString("id");
                         nameCol = jsonObject.getString("title");
                         totalCol = jsonObject.getString("total_photos");
 
@@ -150,7 +163,7 @@ public class CategoryFragment extends Fragment {
                         JSONObject jsonPre3 = jsonArrayPrePhotos.getJSONObject(2);
                         img3 = jsonPre3.getJSONObject("urls").getString("small");
 
-                        collectionArrayList.add(new CollectionPreFiles(img1, img2, img3, nameCol, owner, totalCol));
+                        collectionArrayList.add(new CollectionPreFiles(idCol,img1, img2, img3, nameCol, owner, totalCol));
                         collectionArrayList.size();
                     }
                     collectionAdapter.notifyDataSetChanged();

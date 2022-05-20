@@ -35,12 +35,6 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.WPVH
 
     @Override
     public void onBindViewHolder(@NonNull WPVH holder, int position) {
-//        ImageFiles modal = imgArrayList.get(position);
-//        holder.ownerName.setText(modal.getOwnerName());
-//        holder.idImg.setText(modal.getId_img());
-//        ImageView iv = holder.img;
-//        Picasso.get().load(modal.getImage()).into(iv);
-//    }
         holder.bind(imgArrayList.get(position), listener);
     }
 

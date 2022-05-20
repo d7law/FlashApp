@@ -42,7 +42,7 @@ public class WallpaperFragment extends Fragment {
     private WallpaperAdapter wallpaperAdapter;
     private ArrayList<ImageFiles> imageFilesArrayList;
 
-    private int valueLoad = 1;
+    private int valueLoad = 2;
     String img, id, owner;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -114,8 +114,7 @@ public class WallpaperFragment extends Fragment {
         rv.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         rv.setHasFixedSize(true);
 
-        getImage(valueLoad);
-        valueLoad++;
+        getImage(1);
 
         //loadmoredata
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -127,19 +126,13 @@ public class WallpaperFragment extends Fragment {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int arrSize = imageFilesArrayList.size();
-                if (layoutManager.findLastVisibleItemPosition() == arrSize - 1) {
-                    layoutManager.scrollToPosition(layoutManager.findFirstCompletelyVisibleItemPosition());
-                    loadMore(valueLoad);
+                if(!rv.canScrollVertically(1)){
+                    getImage(valueLoad++);
                 }
             }
         });
     }
-    public void loadMore(int val){
-        getImage(val);
-        valueLoad++;
-        wallpaperAdapter.notifyDataSetChanged();
-    }
+
     public void getImage(int value){
         String url = "https://api.unsplash.com/search/photos?page="+value+"&orientation=portrait&query=phonewallpaper&client_id=KO9uwqG9NK9c0Cei9MrxdsDunlzef96kWfqVH1S5tEs";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
