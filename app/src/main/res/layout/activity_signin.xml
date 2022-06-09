@@ -11,32 +11,30 @@
         android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="35sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        />
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ip1"
         android:layout_below="@id/txtLogin"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textColorHint="@color/white"
+        android:layout_margin="30dp"
+        android:textColorHint="@color/colorLightBlack"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:hintTextColor="@color/white">
+        app:hintTextColor="@color/colorLightBlack">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tvEmailIP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,11 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/colorLightBlack"
         app:hintEnabled="true"
         android:layout_below="@id/ip1"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:hintTextColor="@color/white">
+        app:hintTextColor="@color/colorLightBlack">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tvPassIP"
@@ -58,18 +56,22 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSignIn"
+        style="@style/MineCustomTabText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ip2"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="26dp"
+        android:background="@color/white"
         android:text="Log In"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal" />
 
@@ -92,4 +94,12 @@
         android:text="Create"
         android:textColor="@color/white"
         android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCreate"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_text_logo_flash" />
 </RelativeLayout>

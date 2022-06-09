@@ -1,5 +1,7 @@
 package com.example.wallpaperunsplash_advancedandroid;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -14,13 +16,19 @@ import com.example.wallpaperunsplash_advancedandroid.fragmentMain.HomeFragment;
 import com.example.wallpaperunsplash_advancedandroid.fragmentMain.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
+    public Uri imgUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         display(R.id.mnHome);
@@ -33,9 +41,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void display(int id){
+    @Override
+    public void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    void display(int id) {
         Fragment fragment = null;
-        switch (id){
+        switch (id) {
             case R.id.mnHome:
                 fragment = new HomeFragment();
                 break;
@@ -52,5 +67,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content, fragment);
         ft.commit();
+
     }
 }

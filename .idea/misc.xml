@@ -3,15 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1825" />
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1825" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/activity_category_detail.xml" value="0.10989583333333333" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
-        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/activity_raw_image.xml" value="0.17074275362318841" />
-        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_account.xml" value="0.1" />
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/activity_raw_image.xml" value="0.3020030816640986" />
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/activity_signin.xml" value="0.264" />
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_account.xml" value="0.2" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_collection.xml" value="0.22644927536231885" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_downloaded.xml" value="0.10989583333333333" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_editorial.xml" value="0.16666666666666666" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_search.xml" value="0.22826086956521738" />
+        <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_uploaded.xml" value="0.18614130434782608" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/fragment_wallpaper.xml" value="0.17074275362318841" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/grid_photo_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Huflit/KY6(nam3)/AndroidNC/WallPaperUNSPLASH_AdvancedAndroid/app/src/main/res/layout/image_item.xml" value="0.17074275362318841" />

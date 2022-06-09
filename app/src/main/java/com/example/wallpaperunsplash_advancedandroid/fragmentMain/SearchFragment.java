@@ -97,6 +97,7 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //FirebaseDatabase db = FirebaseDatabase.getInstance();
         //Adapter
         rv = view.findViewById(R.id.rvSearchDiscover);
         EditorialAdapter.OnItemClickListener listener;
@@ -111,7 +112,7 @@ public class SearchFragment extends Fragment {
         };
         gridAdapter = new GridAdapter(getContext(), imgArraylist, listener);
         rv.setAdapter(gridAdapter);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         rv.setLayoutManager(layoutManager);
         rv.setHasFixedSize(true);
         //default page
@@ -165,6 +166,7 @@ public class SearchFragment extends Fragment {
                         imgArraylist.add(new ImageFiles(id, img, owner));
                     }
                     gridAdapter.notifyDataSetChanged();
+                    imgArraylist.size();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
