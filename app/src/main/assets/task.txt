@@ -1,33 +1,6 @@
-        </com.google.android.material.tabs.TabLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-<com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:tabGravity="fill"
-                    app:tabTextColor="@color/colorAccent"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                    app:tabTextAppearance="@style/MineCustomTabText">
-
-                    <com.google.android.material.tabs.TabItem
-                        android:id="@+id/tabEditorial"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Editorial" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:id="@+id/tabWallpaper"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Wallpaper" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:id="@+id/tabCategory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Category" />
-</com.google.android.material.tabs.TabLayout>
+1.Load photo from Unsplash
+2.Download to gallery -> use SQLite to save path
+3.Search
+4.Upload photo to Firebase
+5.Like photo (not done)
+6.Delete photo(not done)

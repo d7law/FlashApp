@@ -36,7 +36,9 @@ public class ImageFiles implements Serializable {
         this.image = image;
         this.ownerName = ownerName;
     }
-
+    public ImageFiles(String image){
+        this.image = image;
+    }
     public String id_img;
     public String image;
     public String ownerName;

@@ -5,42 +5,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RawImageActivity">
+
     <ProgressBar
-        android:layout_width="124dp"
-        android:outlineAmbientShadowColor="@color/white"
-        android:layout_height="wrap_content"
         android:id="@+id/progress_circular"
-        android:visibility="visible"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="5dp"
-        />
+        android:outlineAmbientShadowColor="@color/white"
+        android:visibility="visible" />
+
 
     <com.ortiz.touchview.TouchImageView
         android:id="@+id/ivRawImg"
-        android:scaleType="matrix"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scaleType="matrix"
+        android:src="@drawable/unsplash_wallpaper">
+
     </com.ortiz.touchview.TouchImageView>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivRawImg"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabRawImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorLightBlack"
+            android:text="Action"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/transparent"
+            app:icon="@drawable/ic_baseline_arrow_drop_down_circle_24"
+            app:iconSize="50dp"
+            app:iconTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorLightBlack"
+            android:backgroundTint="@color/colorAccent"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@+id/fabRawImg"
+            app:layout_constraintEnd_toEndOf="@+id/fabRawImg"
+            app:maxImageSize="30dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_downward_24" />
 
         <TextView
-            android:id="@+id/txtOwnerName"
+            android:id="@+id/fabDownload_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="hello"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDownloadImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:text="Download"
-             />
-    </LinearLayout>
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/fabDownload"
+            app:layout_constraintEnd_toStartOf="@id/fabDownload"
+            app:layout_constraintTop_toTopOf="@id/fabDownload" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabLove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/colorAccent"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@id/fabDownload"
+            app:layout_constraintEnd_toEndOf="@id/fabDownload"
+            app:layout_constraintStart_toStartOf="@id/fabDownload"
+            app:maxImageSize="20dp"
+            app:srcCompat="@drawable/ic_baseline_love_24" />
+
+        <TextView
+            android:id="@+id/fabLove_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Add to Favorite"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/fabLove"
+            app:layout_constraintEnd_toStartOf="@id/fabLove"
+            app:layout_constraintTop_toTopOf="@id/fabLove" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </RelativeLayout>
