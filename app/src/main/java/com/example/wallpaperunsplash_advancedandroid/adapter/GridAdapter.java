@@ -18,7 +18,13 @@ public class GridAdapter extends RecyclerView.Adapter<EditorialAdapter.EDVH> {
     public Context context;
     public ArrayList<ImageFiles> imgArrayList;
     public EditorialAdapter.OnItemClickListener listener;
-    public GridAdapter() {}
+    public EditorialAdapter.OnItemLongClickListener listenerLong;
+    public GridAdapter(Context context, ArrayList<ImageFiles> imgArrayList, EditorialAdapter.OnItemClickListener listener, EditorialAdapter.OnItemLongClickListener listenerLong) {
+        this.context = context;
+        this.imgArrayList = imgArrayList;
+        this.listener = listener;
+        this.listenerLong = listenerLong;
+    }
 
     public GridAdapter(Context context, ArrayList<ImageFiles> imgArrayList, EditorialAdapter.OnItemClickListener listener) {
         this.context = context;
@@ -35,13 +41,8 @@ public class GridAdapter extends RecyclerView.Adapter<EditorialAdapter.EDVH> {
 
     @Override
     public void onBindViewHolder(@NonNull EditorialAdapter.EDVH holder, int position) {
-//        ImageFiles modal = imgArrayList.get(position);
-//
-//        holder.ownerName.setText(modal.getOwnerName());
-//        holder.idImg.setText(modal.getId_img());
-//        ImageView iv = holder.img;
-//        Picasso.get().load(modal.getImage()).into(iv);
-        holder.bind(imgArrayList.get(position), listener);
+        holder.bind2(imgArrayList.get(position), listener, listenerLong);
+
     }
 
     @Override

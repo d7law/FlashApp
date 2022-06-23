@@ -112,7 +112,7 @@ public class SearchFragment extends Fragment {
         };
         gridAdapter = new GridAdapter(getContext(), imgArraylist, listener);
         rv.setAdapter(gridAdapter);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         rv.setLayoutManager(layoutManager);
         rv.setHasFixedSize(true);
         //default page

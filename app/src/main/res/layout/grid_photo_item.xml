@@ -8,9 +8,9 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/ivRawImg"
         android:contentDescription="Photo"
         tools:src="@drawable/woody_kelly_35wcsrnvlvo_unsplash"
-        android:id="@+id/ivRawImg"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

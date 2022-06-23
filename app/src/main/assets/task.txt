@@ -4,3 +4,5 @@
 4.Upload photo to Firebase
 5.Like photo (not done)
 6.Delete photo(not done)
+7. Download -> same name file
+

@@ -159,29 +159,30 @@
         </androidx.cardview.widget.CardView>
         <LinearLayout
             android:id="@+id/contentAccount"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_margin="15dp"
             >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/isNullUser"
+                android:text="You need login to see your content!"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtLogintoLogin"
+                android:text="Login"
+                android:textColor="@color/purple_200"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                />
         </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/isNullUser"
-            android:text="You need login to see your content!"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtLogintoLogin"
-            android:text="Login"
-            android:textColor="@color/purple_200"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            />
+
 
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton

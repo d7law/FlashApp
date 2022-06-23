@@ -1,14 +1,17 @@
 package com.example.wallpaperunsplash_advancedandroid.fragmentOfAccount;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -19,6 +22,8 @@ import com.example.wallpaperunsplash_advancedandroid.adapter.EditorialAdapter;
 import com.example.wallpaperunsplash_advancedandroid.adapter.GridAdapter;
 import com.example.wallpaperunsplash_advancedandroid.fragmentMain.AccountFragment;
 import com.example.wallpaperunsplash_advancedandroid.models.ImageFiles;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -99,7 +104,6 @@ public class UploadedFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         id = AccountFragment.userID;
 
-
         tvNull = view.findViewById(R.id.tvNonImg);
         rv = view.findViewById(R.id.rvUploaded);
         EditorialAdapter.OnItemClickListener listener;
@@ -111,11 +115,37 @@ public class UploadedFragment extends Fragment {
                 startActivity(intent);
             }
         };
-        adapter = new GridAdapter(getContext(), arrayList, listener);
+        EditorialAdapter.OnItemLongClickListener listenerLong;
+        listenerLong = new EditorialAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(ImageFiles imageFiles) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Do you want to DELETE this photo?");
+                builder.setTitle("Delete");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String idImg = imageFiles.getId_img();
+                        deletePhoto(idImg);
+                        //Toast.makeText(getContext(), "Deleted!!!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        };
+        adapter = new GridAdapter(getContext(), arrayList, listener, listenerLong);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rv.setAdapter(adapter);
         rv.setLayoutManager(layoutManager);
-        //rv.setHasFixedSize(true);
+        rv.setHasFixedSize(true);
 
         fStorage = FirebaseStorage.getInstance();
         refStorage = fStorage.getReference();
@@ -126,31 +156,6 @@ public class UploadedFragment extends Fragment {
     }
 
     private void loadImage() {
-        StorageReference pathRef = refStorage.child("photoUploaded").child(id);
-//        pathRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-//            @Override
-//            public void onSuccess(ListResult listResult) {
-//                arrayList.clear();
-//                for(StorageReference file:listResult.getItems()){
-//                    file.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            img = uri.toString();
-//                            arrayList.add(new ImageFiles(id, img, owner));
-//                        }
-//                    }).addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            adapter.notifyDataSetChanged();
-//                            if(arrayList.size()!=0){
-//                                tvNull.setVisibility(View.GONE);
-//                            }
-//                        }
-//                    });
-//                }
-//
-//            }
-//
         Query qPhoto = refData.child("users").child(id).child("photoUploaded");
         qPhoto.addValueEventListener(new ValueEventListener() {
             @Override
@@ -158,10 +163,12 @@ public class UploadedFragment extends Fragment {
                 arrayList.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String imgLink = dataSnapshot.getValue().toString();
+                    String idImg = dataSnapshot.getKey();
                     String count = String.valueOf(i);
-                    arrayList.add(new ImageFiles(id, imgLink, count));
+                    arrayList.add(new ImageFiles(idImg, imgLink, count));
                     i++;
                 }
+                i=1;
                 adapter.notifyDataSetChanged();
                 if(arrayList.size()!=0) tvNull.setVisibility(View.GONE);
             }
@@ -169,6 +176,21 @@ public class UploadedFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+    private void deletePhoto(String idImg) {
+        StorageReference pathRef = refStorage.child("photoUploaded").child(id).child(idImg);
+        pathRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getContext(), "Deleted!!!", Toast.LENGTH_SHORT).show();
+                refData.child("users").child(id).child("photoUploaded").child(idImg).removeValue();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Delete Failed", Toast.LENGTH_SHORT).show();
             }
         });
     }

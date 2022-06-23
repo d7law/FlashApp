@@ -20,6 +20,9 @@ public class EditorialAdapter extends RecyclerView.Adapter<EditorialAdapter.EDVH
     public interface OnItemClickListener{
         void onItemClick(ImageFiles imageFiles);
     }
+    public interface OnItemLongClickListener{
+        void onItemLongClick(ImageFiles imageFiles);
+    }
     //declare
     public Context context;
     public ArrayList<ImageFiles> imgArrayList;
@@ -41,13 +44,6 @@ public class EditorialAdapter extends RecyclerView.Adapter<EditorialAdapter.EDVH
     @Override
     public void onBindViewHolder(@NonNull EDVH holder, int position) {
         holder.bind(imgArrayList.get(position), onItemClickListener);
-//        ImageFiles modal = imgArrayList.get(position);
-//
-//        holder.ownerName.setText(modal.getOwnerName());
-//        holder.idImg.setText(modal.getId_img());
-//        ImageView iv = holder.img;
-//        Picasso.get().load(modal.getImage()).into(iv);
-
     }
 
     @Override
@@ -72,6 +68,24 @@ public class EditorialAdapter extends RecyclerView.Adapter<EditorialAdapter.EDVH
                 @Override
                 public void onClick(View view) {
                     listener.onItemClick(imageFiles);
+                }
+            });
+        }
+        public void bind2(final ImageFiles imageFiles,final OnItemClickListener listener, final OnItemLongClickListener listenerLong){
+            ownerName.setText(imageFiles.getOwnerName());
+            idImg.setText(imageFiles.getId_img());
+            Picasso.get().load(imageFiles.getImage()).into(img);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(imageFiles);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    listenerLong.onItemLongClick(imageFiles);
+                    return true;
                 }
             });
         }

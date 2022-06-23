@@ -54,7 +54,6 @@ public class AccountFragment extends Fragment {
     ImageView ivAvatar, btnLogout;
     TabLayout tabLayout;
     FloatingActionButton fab;
-    FlashUser flashUser;
     FirebaseAuth mAuth;
     public static String userID, owner;
     FirebaseUser currentUser;
@@ -264,8 +263,8 @@ public class AccountFragment extends Fragment {
                             @Override
                             public void onSuccess(Uri uri) {
                                 root = fData.getReference().child("users").child(userID).child("photoUploaded");
-                                String imgLink = root.push().getKey();
-                                root.child(imgLink).setValue(uri.toString());
+                                // imgLink = root.push().getKey();
+                                root.child(randomKey).setValue(uri.toString());
                                 progressDialog.dismiss();
                             }
                         });
@@ -287,5 +286,9 @@ public class AccountFragment extends Fragment {
                         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     }
                 });
+    }
+    private void deletePhoto(String userID, String keyId){
+        StorageReference riverRef = refStore.child("photoUploaded/" + userID +"/"+keyId);
+
     }
 }
